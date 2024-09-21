@@ -1,0 +1,17 @@
+.navbar {
+    background-color: #ffffff;
+}
+
+.logo {
+    height: auto;
+    margin-right: 20px;
+}
+
+.icon-cerrar-sesion {
+    margin-right: 5px;
+}
+
+.navbar-text {
+    font-weight: bold;
+    color: #007bff;
+}

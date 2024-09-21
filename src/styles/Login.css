@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background-image: url('');
+  background-size: cover; /* Cubrir toda la pantalla */
+  background-position: center; /* Centrar la imagen */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px; /* Máximo ancho del formulario */
+  padding: 20px;
+  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
+}
+
+.card {
+  padding: 40px;
+  border-radius: 15px;
+  background-color: #ffffff; /* Fondo blanco */
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
+
+.profile-image {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+  margin: 20px auto;
+}
+
+.input-field {
+  background-color: #e8f0fe; /* Color de fondo suave */
+  border: 1px solid #8bc34a; /* Color de borde verde */
+  border-radius: 30px;
+  width: 100%;
+  padding: 15px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s;
+  color: black; /* Color de texto negro */
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: #66bb6a; /* Verde más oscuro al enfocar */
+}
+
+.submit-button {
+  background-color: #4caf50; /* Verde primario */
+  border: none;
+  border-radius: 30px;
+  width: 100%;
+  padding: 15px;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #388e3c; /* Verde más oscuro al pasar el mouse */
+}
+
+.switch-text {
+  margin-top: 20px;
+  font-size: 16px;
+  color: black; /* Color de texto negro */
+}
+
+.switch-button {
+  background: none;
+  border: none;
+  color: #4caf50; /* Verde primario */
+  cursor: pointer;
+  text-decoration: underline;
+  margin-left: 5px;
+}
+
+.switch-button:hover {
+  color: #388e3c; /* Verde más oscuro al pasar el mouse */
+}

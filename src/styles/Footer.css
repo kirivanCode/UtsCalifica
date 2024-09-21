@@ -1,0 +1,27 @@
+.footer-container {
+    background-color: #f8f9fa;
+    bottom: 0;
+    text-align: center;
+    border-top: 1px solid #ccc;
+    width: 100%;
+    position:absolute;
+    left:0px;
+    bottom:0px;
+    margin-top: auto;
+  }
+  
+  .social-icons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+  }
+  
+  .social-icons a {
+    margin: 0 10px;
+    text-decoration: none;
+  }
+  
+  .social-icons img {
+    width: 30px;
+    height: auto;
+  }
