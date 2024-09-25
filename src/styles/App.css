@@ -20,7 +20,7 @@
 .navbar {
   position: fixed;
   top: 0;
-  left: 0;q
+  left: 0;qx|
   width: 100%;
   z-index: 1000; /* Asegura que el navbar esté por encima del contenido */
   background-color: #28a745; /* Color de fondo verde */
