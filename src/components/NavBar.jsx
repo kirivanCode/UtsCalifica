@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import appFirebase from '../conexion/credenciales';
-import logo from '../images/perfil_ivan.png';
+import logo from '../images/Califica.png';
 import cerrarSesiones from '../icons/cerrarSesion.ico';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,7 +23,7 @@ const NavBar = ({ usuario }) => {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg navbar-light bg-light shadow`}>
+    <nav className={`navbar navbar-expand-lg bg-success navbar-light shadow`}>
       <div className="container-fluid">
         <NavLink to="/" className="navbar-brand">
           <img src={logo} alt="Logo" className="logo" style={{ width: '150px' }} />

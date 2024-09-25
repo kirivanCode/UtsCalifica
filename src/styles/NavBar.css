@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #ffffff;
+    background-color: #5fdd0b;
 }
 
 .logo {
@@ -10,7 +10,7 @@
 .icon-cerrar-sesion {
     margin-right: 5px;
 }
-
+    
 .navbar-text {
     font-weight: bold;
     color: #007bff;

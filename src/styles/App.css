@@ -16,4 +16,46 @@
     margin-right: 8px;
     z-index: 1000;
   }
-  
+  /* Posiciona el navbar en la parte superior de la pantalla */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;q
+  width: 100%;
+  z-index: 1000; /* Asegura que el navbar esté por encima del contenido */
+  background-color: #28a745; /* Color de fondo verde */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el navbar */
+}
+
+body {
+  padding-top: 60px; 
+}
+
+.logo {
+  width: 150px;
+}
+
+.navbar-text {
+  color: #63e630;
+  font-weight: bold;
+}
+
+.nav-link {
+  color: #fff; 
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #c3e6cb; 
+}
+
+.btn-link {
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.3s ease;
+}
+
+.btn-link:hover {
+  color: #72dc35; 
+}
