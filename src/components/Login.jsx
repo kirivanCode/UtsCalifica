@@ -28,6 +28,7 @@ const Login = () => {
     <div className="container">
       <div className="form-container">
         <div className="card">
+        <h2 className="login-title">¡UTS CALIFICA!</h2>
           <img src={ImageProfile} alt="Profile" className="profile-image" />
           <form onSubmit={functAutenticacion}>
             <input type="text" placeholder='Ingrese el usuario' className="input-field" id="email" required />

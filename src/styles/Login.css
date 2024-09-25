@@ -1,13 +1,25 @@
 body {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background-image: url('');
-  background-size: cover; /* Cubrir toda la pantalla */
-  background-position: center; /* Centrar la imagen */
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  background-color: #f0f0f0;
+  background-image: url('https://media.istockphoto.com/id/1159577042/es/vector/educaci%C3%B3n.jpg?s=612x612&w=0&k=20&c=u8_tyRKiwGeGCVDv1HEJf9Fft73af_q_cLU1uN2DFhI='); /* Reemplaza con la URL de la imagen */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: #333;
+}
+
+.login-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente para realzar el formulario */
 }
 
 .container {
@@ -16,19 +28,22 @@ body {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  max-width: 400px; /* Máximo ancho del formulario */
+  max-width: 400px;
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
-  border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2); /* Sombra para el contenedor */
+  background: linear-gradient(145deg, rgba(4, 119, 0, 0.9), rgba(4, 119, 0, 0.9)); /* Fondo con gradiente suave */
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(15px);
+  animation: fadeIn 1s ease-in-out;
 }
 
 .card {
   padding: 40px;
   border-radius: 15px;
-  background-color: #ffffff; /* Fondo blanco */
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Ocupa todo el ancho disponible */
+  background-color: rgba(255, 255, 255, 0.85);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  text-align: center;
 }
 
 .profile-image {
@@ -36,55 +51,75 @@ body {
   height: 120px;
   width: 120px;
   margin: 20px auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .input-field {
-  background-color: #e8f0fe; /* Color de fondo suave */
-  border: 1px solid #8bc34a; /* Color de borde verde */
+  background-color: #e3f2fd;
+  border: 1px solid #42a5f5;
   border-radius: 30px;
   width: 100%;
   padding: 15px;
   margin-bottom: 20px;
-  transition: border-color 0.3s;
-  color: black; /* Color de texto negro */
+  transition: border-color 0.3s, box-shadow 0.3s;
+  color: #333;
 }
 
 .input-field:focus {
   outline: none;
-  border-color: #66bb6a; /* Verde más oscuro al enfocar */
+  border-color: #1e88e5;
+  box-shadow: 0 0 10px rgba(30, 136, 229, 0.5);
 }
 
 .submit-button {
-  background-color: #4caf50; /* Verde primario */
+  background-color: #1e88e5;
   border: none;
   border-radius: 30px;
   width: 100%;
   padding: 15px;
   color: white;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
   font-size: 16px;
 }
 
 .submit-button:hover {
-  background-color: #388e3c; /* Verde más oscuro al pasar el mouse */
+  background-color: #1565c0;
+  transform: translateY(-3px);
 }
 
 .switch-text {
   margin-top: 20px;
   font-size: 16px;
-  color: black; /* Color de texto negro */
+  color: #333;
 }
 
 .switch-button {
   background: none;
   border: none;
-  color: #4caf50; /* Verde primario */
+  color: #1e88e5;
   cursor: pointer;
   text-decoration: underline;
   margin-left: 5px;
+  transition: color 0.3s;
 }
 
 .switch-button:hover {
-  color: #388e3c; /* Verde más oscuro al pasar el mouse */
+  color: #1565c0;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+h2{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
