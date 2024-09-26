@@ -17,15 +17,7 @@
     z-index: 1000;
   }
   /* Posiciona el navbar en la parte superior de la pantalla */
-.navbar {
-  position: fixed;
-  top: 0;
-  left: 0;qx|
-  width: 100%;
-  z-index: 1000; /* Asegura que el navbar esté por encima del contenido */
-  background-color: #28a745; /* Color de fondo verde */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra para el navbar */
-}
+
 
 body {
   padding-top: 60px; 
@@ -58,4 +50,21 @@ body {
 
 .btn-link:hover {
   color: #72dc35; 
+}
+
+
+.logo {
+  width: 95px; /* Ajuste de tamaño más pequeño para el logo */
+  height: auto;
+  margin-right: 10px;
+}
+
+.icon-cerrar-sesion {
+  width: 20px; /* Tamaño más pequeño y proporcionado del ícono */
+  margin-right: 5px;
+}
+
+.navbar-text {
+  font-weight: 600;
+  color: #ffffff; /* Texto blanco para mejor contraste */
 }

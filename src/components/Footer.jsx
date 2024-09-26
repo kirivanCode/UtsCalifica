@@ -7,7 +7,7 @@ import '../styles/Footer.css';
 const Footer = () => {
   return (
     <footer className="footer-container">
-      <p>Todos los derechos reservados. Copyright © Detodito 2023</p>
+      <p>Todos los derechos reservados. Copyright © Uts Califica 2024</p>
       <div className="social-icons">
         <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
           <img src={facebookIcon} alt="Facebook" />

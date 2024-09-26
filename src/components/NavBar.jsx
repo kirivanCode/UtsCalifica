@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
 import appFirebase from '../conexion/credenciales';
-import logo from '../images/Califica.png';
+import logo from '../images/uts califica.png';
 import cerrarSesiones from '../icons/cerrarSesion.ico';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -23,10 +23,10 @@ const NavBar = ({ usuario }) => {
   };
 
   return (
-    <nav className={`navbar navbar-expand-lg bg-success navbar-light shadow`}>
+    <nav className={`navbar navbar-expand-lg bg-dark navbar-dark fixed-top shadow`}>
       <div className="container-fluid">
         <NavLink to="/" className="navbar-brand">
-          <img src={logo} alt="Logo" className="logo" style={{ width: '150px' }} />
+          <img src={logo} alt="Logo" className="logo" />
         </NavLink>
         <button className="navbar-toggler" type="button" onClick={toggleMenu}>
           <span className="navbar-toggler-icon"></span>
@@ -36,10 +36,14 @@ const NavBar = ({ usuario }) => {
             <li className="nav-item">
               <NavLink to="/" className="nav-link active">Inicio</NavLink>
             </li>
+
+            <li className="nav-item">
+              <NavLink to="/profesores" className="nav-link active">Profesores</NavLink>
+            </li>
             {usuario && (
               <li className="nav-item">
                 <button className="btn btn-link nav-link" onClick={cerrarSesion}>
-                  <img src={cerrarSesiones} alt="Cerrar Sesión" className="icon-cerrar-sesion" style={{ width: '25px' }} />
+                  <img src={cerrarSesiones} alt="Cerrar Sesión" className="icon-cerrar-sesion" />
                   Cerrar Sesión
                 </button>
               </li>
