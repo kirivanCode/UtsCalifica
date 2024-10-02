@@ -1,30 +1,25 @@
 import { useState, useEffect } from 'react';
-import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth'; // Asegúrate de importar Firebase
-// Importa tu configuración de credenciales Firebase
-
+import { getAuth, onAuthStateChanged, signOut } from 'firebase/auth';
 import Home from './components/Home';
-
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/Login';
 import NavBar from './components/NavBar';
-import Footer from './components/Footer'; // Asegúrate de que la ruta sea correcta
-import 'bootstrap/dist/css/bootstrap.min.css';
+import Footer from './components/Footer';
+import ProfesorCrud from './components/ProfesorCrud';
+import Conocenos from './components/Conocenos';
+import EstudianteCalificaciones from './components/EstudianteCalificaciones';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './styles/App.css';
+
 const auth = getAuth();
 
 function App() {
- 
-
   const [usuario, setUsuario] = useState(null);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (usuarioFirebase) => {
-      if (usuarioFirebase) {
-        setUsuario(usuarioFirebase);
-      } else {
-        setUsuario(null);
-      }
+      setUsuario(usuarioFirebase ? usuarioFirebase : null);
     });
 
     return () => unsubscribe();
@@ -34,25 +29,25 @@ function App() {
     try {
       await signOut(auth);
       setUsuario(null);
-      setCartItems([]);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
   };
-
 
   return (
     <div>
       <Router>
         {usuario ? (
           <>
-            <NavBar usuario={usuario} cerrarSesion={cerrarSesion}/>
+            <NavBar usuario={usuario} cerrarSesion={cerrarSesion} />
             <Routes>
               <Route path="/" element={<Home />} />
-              
+              <Route path="/profesores" element={<ProfesorCrud />} />
+              <Route path="/calificaciones" element={<EstudianteCalificaciones />} />
+              <Route path="/calificar" element={<EstudianteCalificaciones />} />
+              <Route path="/conocenos" element={<Conocenos />} />
               
             </Routes>
-            
             <Footer />
           </>
         ) : (

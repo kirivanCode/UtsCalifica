@@ -1,5 +1,5 @@
 import React from "react";
-import NavBar from "./NavBar"; // Asegúrate de que la ruta sea correcta
+// Asegúrate de que la ruta sea correcta
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
