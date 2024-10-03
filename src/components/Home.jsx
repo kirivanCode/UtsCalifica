@@ -1,9 +1,11 @@
 import React from "react";
+ 
 // Asegúrate de que la ruta sea correcta
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {
   return (
+    
     <div className="home-container">
 
       <h1>Buenas a esta mamada</h1>
