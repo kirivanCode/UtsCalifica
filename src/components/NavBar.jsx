@@ -1,3 +1,20 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { getAuth, signOut } from 'firebase/auth';
@@ -99,3 +116,4 @@ const NavBar = ({ usuario, rol }) => { // Recibe el rol del usuario
 };
 
 export default NavBar;
+
