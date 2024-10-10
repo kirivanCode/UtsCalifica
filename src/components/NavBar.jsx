@@ -23,6 +23,7 @@ const NavBar = ({ usuario, rol }) => { // Recibe el rol del usuario
   };
 
   const renderMenuByRole = () => {
+    if (!rol) return null; // Verifica que el rol esté definido
     switch (rol) {
       case "administrador":
         return (
@@ -82,7 +83,7 @@ const NavBar = ({ usuario, rol }) => { // Recibe el rol del usuario
             {usuario && (
               <>
                 <span className="navbar-text me-2 text-light">
-                  {rol.charAt(0).toUpperCase() + rol.slice(1)}
+                  {rol ? rol.charAt(0).toUpperCase() + rol.slice(1) : 'Sin rol'}
                 </span>
                 <button className="btn btn-link nav-link text-light" onClick={cerrarSesion}>
                   <img src={cerrarSesiones} alt="Cerrar Sesión" className="icon-cerrar-sesion" style={{ width: '20px', marginRight: '5px' }} />

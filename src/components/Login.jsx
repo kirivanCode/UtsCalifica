@@ -3,29 +3,28 @@ import ImageProfile from '../images/perfil_ivan.png';
 import '../styles/Login.css';
 import appFirebase from '../conexion/credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { getFirestore, doc, setDoc } from "firebase/firestore";
+import { getFirestore, doc, setDoc, getDoc } from "firebase/firestore";
 
 const auth = getAuth(appFirebase);
-const db = getFirestore(appFirebase); // Firestore
+const db = getFirestore(appFirebase);
 
-const Login = () => {
+const Login = ({ setUsuario, setRol }) => {
   const [registrando, setRegistrando] = useState(false);
-  const [rolSeleccionado, setRolSeleccionado] = useState('usuario'); // Rol por defecto
-  const [cargando, setCargando] = useState(false); // Estado para mostrar carga
+  const [rolSeleccionado, setRolSeleccionado] = useState('usuario');
+  const [cargando, setCargando] = useState(false);
+  const [mensajeExito, setMensajeExito] = useState(''); // Estado para el mensaje de éxito
 
   const functAutenticacion = async (e) => {
     e.preventDefault();
     const correo = e.target.email.value;
     const contraseña = e.target.password.value;
     
-    setCargando(true); // Mostrar spinner o mensaje de carga
+    setCargando(true);
     try {
       if (registrando) {
-        // Registro de usuario
         const userCredential = await createUserWithEmailAndPassword(auth, correo, contraseña);
         const usuario = userCredential.user;
 
-        // Obtener el UID del rol seleccionado
         let rolId;
         switch (rolSeleccionado) {
           case 'profesor':
@@ -35,38 +34,37 @@ const Login = () => {
             rolId = 'fSyz08YcoklpJBaKWjlZ';
             break;
           default:
-            rolId = 'iMx3SDTJ0zAM5CVAe62i'; // Usuario por defecto
+            rolId = 'iMx3SDTJ0zAM5CVAe62i';
         }
 
-        // Guardar el rol en Firestore
         await setDoc(doc(db, "usuarios", usuario.uid), {
           correo: correo,
           rol: rolSeleccionado,
-          rolId: rolId // Guardamos también el UID del rol
+          rolId: rolId
         });
 
-        // Mostrar mensaje de registro exitoso
-        alert("Registro exitoso. Ahora puede iniciar sesión.");
-
-        // Opcional: Mantener al usuario conectado después del registro.
-        // O redirigir a otra página de bienvenida.
-        setRegistrando(false); // Cambiar a modo de inicio de sesión
-
+        setUsuario(usuario);
+        setRol(rolSeleccionado);
+        setMensajeExito("Registro exitoso."); // Mostrar mensaje de éxito
       } else {
-        // Inicio de sesión
-        await signInWithEmailAndPassword(auth, correo, contraseña);
-        alert("Inicio de sesión exitoso");
+        const userCredential = await signInWithEmailAndPassword(auth, correo, contraseña);
+        const usuario = userCredential.user;
+        const docRef = doc(db, "usuarios", usuario.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          setRol(docSnap.data().rol);
+        } else {
+          console.error("El documento no existe");
+          alert("No se encontró la información de este usuario.");
+        }
+        setUsuario(usuario);
+        setMensajeExito("Inicio de sesión exitoso."); // Mostrar mensaje de éxito
       }
     } catch (error) {
       console.error("Error en la autenticación:", error);
-      const errorMessage = error.message;
-      if (registrando) {
-        alert("Error en el registro: " + errorMessage);
-      } else {
-        alert("El correo o la contraseña son incorrectos: " + errorMessage);
-      }
+      alert(registrando ? "Error en el registro: " + error.message : "El correo o la contraseña son incorrectos: " + error.message);
     } finally {
-      setCargando(false); // Ocultar spinner o mensaje de carga
+      setCargando(false);
     }
   };
 
@@ -80,7 +78,6 @@ const Login = () => {
             <input type="text" placeholder="Ingrese el usuario" className="input-field" id="email" required />
             <input type="password" placeholder="Ingrese la contraseña" className="input-field" id="password" required />
 
-            {/* Mostrar selección de roles solo si el usuario se está registrando */}
             {registrando && (
               <div className="role-selection">
                 <label>Seleccione su rol:</label>
@@ -100,6 +97,14 @@ const Login = () => {
               {cargando ? "Cargando..." : registrando ? "Regístrate" : "Inicia Sesión"}
             </button>
           </form>
+
+          {/* Mostrar mensaje de éxito si existe */}
+          {mensajeExito && (
+            <div className="success-message">
+              <p>{mensajeExito}</p>
+            </div>
+          )}
+
           <div className="switch-text">
             {registrando ? "¿Ya tienes cuenta?" : "¿No tienes cuenta?"}
             <button className="switch-button" onClick={() => setRegistrando(!registrando)} disabled={cargando}>
@@ -113,5 +118,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
