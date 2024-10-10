@@ -5,22 +5,57 @@ import '../styles/calificarProfesor.css'; // Archivo CSS para estilos
 
 const EstudianteCalificaciones = () => {
   const [profesores, setProfesores] = useState([]);
+  const [cargando, setCargando] = useState(true); // Estado para controlar la carga inicial
+  const [actualizando, setActualizando] = useState(null); // Estado para controlar cuál profesor está siendo actualizado
 
+  // Obtener la lista de profesores al cargar el componente
   const getProfesores = async () => {
-    const querySnapshot = await getDocs(collection(db, "profesores"));
-    const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-    setProfesores(data);
+    setCargando(true); // Mostrar spinner de carga mientras obtenemos los datos
+    try {
+      const querySnapshot = await getDocs(collection(db, "profesores"));
+      const data = querySnapshot.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+      setProfesores(data);
+    } catch (error) {
+      console.error("Error al obtener profesores:", error);
+    } finally {
+      setCargando(false); // Ocultar spinner de carga
+    }
   };
 
-  const calificarProfesor = async (id, calificacion, comentarios) => {
-    const docRef = doc(db, "profesores", id);
-    await updateDoc(docRef, { calificacion, comentarios });
-    getProfesores();
+  // Actualizar la calificación de un profesor sin recargar toda la lista
+  const calificarProfesor = async (id, calificacion, calificacion2, calificacion3, comentarios) => {
+    setActualizando(id); // Mostrar que estamos actualizando este profesor
+    try {
+      const docRef = doc(db, "profesores", id);
+      await updateDoc(docRef, { 
+        calificacion, 
+        calificacion2, 
+        calificacion3, 
+        comentarios 
+      });
+
+      // Actualizamos solo el profesor modificado en el estado local sin recargar todo
+      setProfesores((prevProfesores) =>
+        prevProfesores.map((profesor) =>
+          profesor.id === id
+            ? { ...profesor, calificacion, calificacion2, calificacion3, comentarios }
+            : profesor
+        )
+      );
+    } catch (error) {
+      console.error("Error al calificar profesor:", error);
+    } finally {
+      setActualizando(null); // Desbloquear el profesor cuando se complete la actualización
+    }
   };
 
   useEffect(() => {
-    getProfesores();
+    getProfesores(); // Cargar profesores una vez al montar el componente
   }, []);
+
+  if (cargando) {
+    return <div className="spinner">Cargando profesores...</div>; // Spinner o mensaje de carga
+  }
 
   return (
     <div className="calificacion-container">
@@ -33,14 +68,16 @@ const EstudianteCalificaciones = () => {
               onSubmit={(e) => {
                 e.preventDefault();
                 const form = e.target;
-                const calificacion = form.calificacion.value;
+                const calificacion = form.calificacion1.value;
+                const calificacion2 = form.calificacion2.value;
+                const calificacion3 = form.calificacion3.value;
                 const comentarios = form.comentarios.value;
-                calificarProfesor(profesor.id, calificacion, comentarios);
+                calificarProfesor(profesor.id, calificacion, calificacion2, calificacion3, comentarios);
               }}
               className="form-calificacion"
             >
               <label>Conocimiento del tema:</label>
-              <input type="number" name="calificacion" min="1" max="5" required />
+              <input type="number" name="calificacion1" min="1" max="5" required />
 
               <label>Claridad al explicar:</label>
               <input type="number" name="calificacion2" min="1" max="5" required />
@@ -51,7 +88,13 @@ const EstudianteCalificaciones = () => {
               <label>Comentarios:</label>
               <textarea name="comentarios" placeholder="Escribe tus comentarios..." required></textarea>
 
-              <button type="submit" className="btn-calificar">Enviar Calificación</button>
+              <button 
+                type="submit" 
+                className="btn-calificar" 
+                disabled={actualizando === profesor.id}
+              >
+                {actualizando === profesor.id ? 'Actualizando...' : 'Enviar Calificación'}
+              </button>
             </form>
           </li>
         ))}
@@ -61,3 +104,5 @@ const EstudianteCalificaciones = () => {
 };
 
 export default EstudianteCalificaciones;
+
+
