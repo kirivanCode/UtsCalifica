@@ -1,7 +1,10 @@
 .conocenos {
   padding: 40px; /* Aumentado para más espacio interno */
   max-width: 1200px; /* Ancho máximo del contenedor */
-  margin: 300px auto 50px; /* Espacio para el Navbar y Footer */
+  margin: 580px auto 50px; /* Espacio para el Navbar y Footer */
+  background-color: #ffffff; /* Fondo blanco para evitar el negro */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 .vision, .mision {

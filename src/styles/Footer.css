@@ -1,14 +1,14 @@
 .footer-container {
-    background-color: #f8f9fa;
-    bottom: 0;
-    text-align: center;
-    border-top: 1px solid #ccc;
-    width: 100%;
-    position:absolute;
-    left:0px;
-    bottom:0px;
-    margin-top: auto;
-  }
+  background-color: #f8f9fa;
+  text-align: center;
+  border-top: 1px solid #ccc;
+  width: 100%;
+  position: relative; /* Cambia esto si es necesario */
+  bottom: 0;
+  margin-top: 50px; /* Asegúrate de que el margen no lo empuje al centro */
+  padding: 20px; /* Espacio interno */
+}
+
   
   .social-icons {
     display: flex;

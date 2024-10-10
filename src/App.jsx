@@ -101,6 +101,7 @@ function App() {
                 <Route path="/conocenos" element={<Conocenos />} />
               </Routes>
             </div>
+            <Footer />
            
           </>
         ) : (
