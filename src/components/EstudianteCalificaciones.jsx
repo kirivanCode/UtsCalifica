@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { db } from '../conexion/firebase';
 import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
-import '../styles/calificarProfesor.css'; // Archivo CSS para estilos
+import '../styles/CalificarProfesor.css'; // Archivo CSS para estilos
 
 const EstudianteCalificaciones = () => {
   const [profesores, setProfesores] = useState([]);
