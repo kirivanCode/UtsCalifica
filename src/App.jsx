@@ -20,32 +20,25 @@ const db = getFirestore(appFirebase);
 
 function App() {
   const [usuario, setUsuario] = useState(null);
-  const [rol, setRol] = useState(null); // Estado para el rol del usuario
-  const [loading, setLoading] = useState(true); // Estado de carga para esperar a que se obtenga el rol
+  const [rol, setRol] = useState(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (usuarioFirebase) => {
       if (usuarioFirebase) {
-        console.log("Usuario autenticado:", usuarioFirebase);
         setUsuario(usuarioFirebase);
-
-        // Obtener rol del usuario desde Firestore
         const docRef = doc(db, "usuarios", usuarioFirebase.uid);
         const docSnap = await getDoc(docRef);
-
         if (docSnap.exists()) {
-          console.log("Documento encontrado:", docSnap.data());
-          setRol(docSnap.data().rol); // Guardar el rol en el estado
+          setRol(docSnap.data().rol);
         } else {
-          console.log("No se encontró el documento del usuario.");
-          setRol(null); // Si no hay documento, no hay rol
+          setRol(null);
         }
       } else {
-        console.log("No hay usuario autenticado.");
         setUsuario(null);
-        setRol(null); // Limpiar el rol cuando no hay usuario autenticado
+        setRol(null);
       }
-      setLoading(false); // Terminar la carga
+      setLoading(false);
     });
 
     return () => unsubscribe();
@@ -55,18 +48,16 @@ function App() {
     try {
       await signOut(auth);
       setUsuario(null);
-      setRol(null); // Limpiar rol al cerrar sesión
+      setRol(null);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
   };
 
-  // Mientras se obtienen los datos de rol, mostramos un mensaje de carga
   if (loading) {
     return <div>Cargando...</div>;
   }
 
-  // Componentes protegidos por roles
   const ProtectedRoute = ({ children, allowedRoles }) => {
     if (!usuario) return <Navigate to="/" />;
     if (!allowedRoles.includes(rol)) return <Navigate to="/" />;
@@ -74,57 +65,51 @@ function App() {
   };
 
   return (
-    <div>
-      <Router>
+    <Router>
+      <div className="app-container">
         {usuario ? (
           <>
             <NavBar usuario={usuario} rol={rol} cerrarSesion={cerrarSesion} />
-            <Routes>
-              <Route path="/" element={<Home />} />
-
-              {/* Rutas para administrador */}
-              <Route 
-                path="/profesores" 
-                element={
-                  <ProtectedRoute allowedRoles={['administrador']}>
-                    <ProfesorCrud />
-                  </ProtectedRoute>
-                } 
-              />
-
-              {/* Rutas para profesor */}
-              <Route 
-                path="/calificar" 
-                element={
-                  <ProtectedRoute allowedRoles={['profesor']}>
-                    <EstudianteCalificaciones />
-                  </ProtectedRoute>
-                } 
-              />
-
-              {/* Rutas para estudiante */}
-              <Route 
-                path="/calificaciones" 
-                element={
-                  <ProtectedRoute allowedRoles={['estudiante']}>
-                    <EstudianteCalificaciones />
-                  </ProtectedRoute>
-                } 
-              />
-
-              {/* Rutas accesibles para todos */}
-              <Route path="/conocenos" element={<Conocenos />} />
-            </Routes>
+            <div className="content-container">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route 
+                  path="/profesores" 
+                  element={
+                    <ProtectedRoute allowedRoles={['administrador']}>
+                      <ProfesorCrud />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/calificar" 
+                  element={
+                    <ProtectedRoute allowedRoles={['profesor']}>
+                      <EstudianteCalificaciones />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/calificaciones" 
+                  element={
+                    <ProtectedRoute allowedRoles={['estudiante']}>
+                      <EstudianteCalificaciones />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route path="/conocenos" element={<Conocenos />} />
+              </Routes>
+            </div>
             <Footer />
           </>
         ) : (
           <Routes>
-            <Route path="/" element={<Login />} />
+            <Route path="/" element={<Login setUsuario={setUsuario} setRol={setRol} />} />
             <Route path="/*" element={<Navigate to="/" />} />
           </Routes>
         )}
-      </Router>
-    </div>
+      </div>
+    </Router>
   );
 }
 

@@ -1,25 +1,25 @@
 body {
   margin: 0;
-  font-family: 'Arial', sans-serif;
+  font-family: 'Roboto', sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
-  background-color: #f0f0f0;
-  background-image: url('https://img2.wallspic.com/crops/2/5/2/0/30252/30252-negocio-taza_de_cafe-tabla-medios_de_comunicacion_social-empresa-3840x2160.jpg'); /* Reemplaza con la URL de la imagen */
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-  color: #333;
+  min-height: 100vh;
+  color: #1d1d1d;
 }
 
 .login-background {
+  
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente para realzar el formulario */
+  background-color: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
+  background-image: url('https://www.uts.edu.co/sitio/wp-content/uploads/2021/02/Fachada-2.jpg'); /* Fondo específico solo para login */
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
 }
 
 .container {
@@ -30,53 +30,64 @@ body {
   width: 100%;
   max-width: 400px;
   padding: 20px;
-  background: linear-gradient(145deg, rgba(4, 119, 0, 0.9), rgba(4, 119, 0, 0.9)); /* Fondo con gradiente suave */
+  background: rgba(255, 255, 255, 0.95);
   border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
   backdrop-filter: blur(15px);
-  animation: fadeIn 1s ease-in-out;
+  animation: fadeIn 0.8s ease-in-out;
 }
 
+
 .card {
-  padding: 40px;
+  padding: 30px;
   border-radius: 15px;
-  background-color: rgba(255, 255, 255, 0.85);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: #ffffff;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   text-align: center;
 }
 
+h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  color: #333; /* Cambié el color del texto del título */
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
 .profile-image {
   border-radius: 50%;
-  height: 120px;
-  width: 120px;
-  margin: 20px auto;
+  height: 100px;
+  width: 100px;
+  margin: 15px auto;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .input-field {
-  background-color: #e3f2fd;
-  border: 1px solid #42a5f5;
+  background-color: #f9f9f9;
+  border: 2px solid #1e88e5;
   border-radius: 30px;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
   margin-bottom: 20px;
   transition: border-color 0.3s, box-shadow 0.3s;
-  color: #333;
+  font-size: 16px;
+  color: #333; /* Color del texto de los campos de entrada */
 }
 
 .input-field:focus {
   outline: none;
-  border-color: #1e88e5;
-  box-shadow: 0 0 10px rgba(30, 136, 229, 0.5);
+  border-color: #1565c0;
+  box-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
 }
 
 .submit-button {
-  background-color: #1e88e5;
+  background-color: #42a5f5;
   border: none;
   border-radius: 30px;
   width: 100%;
-  padding: 15px;
+  padding: 12px;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
@@ -84,14 +95,14 @@ body {
 }
 
 .submit-button:hover {
-  background-color: #1565c0;
+  background-color: #1e88e5;
   transform: translateY(-3px);
 }
 
 .switch-text {
   margin-top: 20px;
-  font-size: 16px;
-  color: #333;
+  font-size: 15px;
+  color: #555; /* Texto más oscuro para mejor contraste */
 }
 
 .switch-button {
@@ -119,7 +130,49 @@ body {
   }
 }
 
-h2{
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+/* Media Queries para Responsividad */
+@media (max-width: 768px) {
+  .container {
+    padding: 15px;
+  }
+
+  .input-field {
+    padding: 10px;
+  }
+
+  .submit-button {
+    padding: 10px;
+  }
+
+  h2 {
+    font-size: 20px;
+  }
+
+  .profile-image {
+    height: 80px;
+    width: 80px;
+  }
 }
 
+@media (max-width: 480px) {
+  .container {
+    padding: 10px;
+  }
+
+  .input-field {
+    padding: 8px;
+  }
+
+  .submit-button {
+    padding: 8px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  .profile-image {
+    height: 70px;
+    width: 70px;
+  }
+}
