@@ -71,6 +71,7 @@ function App() {
           <>
             <NavBar usuario={usuario} rol={rol} cerrarSesion={cerrarSesion} />
             <div className="content-container">
+              
               <Routes>
                 <Route path="/" element={<Home />} />
                 <Route 
@@ -100,7 +101,7 @@ function App() {
                 <Route path="/conocenos" element={<Conocenos />} />
               </Routes>
             </div>
-            <Footer />
+           
           </>
         ) : (
           <Routes>

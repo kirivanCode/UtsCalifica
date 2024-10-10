@@ -1,0 +1,55 @@
+.conocenos {
+  padding: 40px; /* Aumentado para más espacio interno */
+  max-width: 1200px; /* Ancho máximo del contenedor */
+  margin: 300px auto 50px; /* Espacio para el Navbar y Footer */
+}
+
+.vision, .mision {
+  margin-bottom: 30px; /* Espacio entre secciones */
+  background-color: #f9f9f9; /* Fondo claro para secciones */
+  padding: 20px; /* Espacio interno */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+}
+
+.equipo {
+  margin-top: 50px; /* Espacio superior para el equipo */
+}
+
+.integrantes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around; /* Espacio entre integrantes */
+}
+
+.integrante {
+  width: 200px; /* Ancho fijo para cada integrante */
+  margin: 20px; /* Margen entre integrantes */
+  text-align: center; /* Alinear texto al centro */
+}
+
+.integrante img {
+  width: 100%; /* Imagen responsiva */
+  height: auto; /* Altura automática */
+  border-radius: 50%; /* Imagen circular */
+  border: 2px solid #63e630; /* Borde verde */
+}
+
+@media (max-width: 768px) {
+  .integrante {
+    width: 150px; /* Ancho reducido en pantallas pequeñas */
+  }
+}
+
+@media (max-width: 480px) {
+  .integrantes {
+    flex-direction: column; /* Columna en pantallas muy pequeñas */
+    align-items: center; /* Alinear al centro */
+  }
+  
+  .integrante {
+    width: 80%; /* Ancho mayor en pantallas pequeñas */
+  }
+}
+
+
