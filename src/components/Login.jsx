@@ -1,17 +1,5 @@
-
-
-
-
-
-
-
-
-
-
-
-
 import React, { useState } from "react";
-import ImageProfile from '../images/perfil_ivan.png';
+import ImageProfile from '../images/oscar.jpg';
 import '../styles/Login.css';
 import appFirebase from '../conexion/credenciales';
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
@@ -24,13 +12,13 @@ const Login = ({ setUsuario, setRol }) => {
   const [registrando, setRegistrando] = useState(false);
   const [rolSeleccionado, setRolSeleccionado] = useState('usuario');
   const [cargando, setCargando] = useState(false);
-  const [mensajeExito, setMensajeExito] = useState(''); // Estado para el mensaje de éxito
+  const [mensajeExito, setMensajeExito] = useState('');
 
   const functAutenticacion = async (e) => {
     e.preventDefault();
     const correo = e.target.email.value;
     const contraseña = e.target.password.value;
-    
+
     setCargando(true);
     try {
       if (registrando) {
@@ -57,7 +45,7 @@ const Login = ({ setUsuario, setRol }) => {
 
         setUsuario(usuario);
         setRol(rolSeleccionado);
-        setMensajeExito("Registro exitoso."); // Mostrar mensaje de éxito
+        setMensajeExito("Registro exitoso.");
       } else {
         const userCredential = await signInWithEmailAndPassword(auth, correo, contraseña);
         const usuario = userCredential.user;
@@ -70,7 +58,7 @@ const Login = ({ setUsuario, setRol }) => {
           alert("No se encontró la información de este usuario.");
         }
         setUsuario(usuario);
-        setMensajeExito("Inicio de sesión exitoso."); // Mostrar mensaje de éxito
+        setMensajeExito("Inicio de sesión exitoso.");
       }
     } catch (error) {
       console.error("Error en la autenticación:", error);
@@ -110,7 +98,6 @@ const Login = ({ setUsuario, setRol }) => {
             </button>
           </form>
 
-          {/* Mostrar mensaje de éxito si existe */}
           {mensajeExito && (
             <div className="success-message">
               <p>{mensajeExito}</p>
@@ -130,5 +117,3 @@ const Login = ({ setUsuario, setRol }) => {
 };
 
 export default Login;
-
-

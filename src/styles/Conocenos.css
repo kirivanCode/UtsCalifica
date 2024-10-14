@@ -1,22 +1,24 @@
 .conocenos {
   padding: 40px; /* Aumentado para más espacio interno */
   max-width: 1200px; /* Ancho máximo del contenedor */
-  margin: 580px auto 50px; /* Espacio para el Navbar y Footer */
-  background-color: #ffffff; /* Fondo blanco para evitar el negro */
+  margin: 20px auto 10px; /* Espacio para el Navbar y Footer */
+  background-color: #1b1b1b; /* Fondo blanco para evitar el negro */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
+  color: aliceblue;
+
 }
 
 .vision, .mision {
   margin-bottom: 30px; /* Espacio entre secciones */
-  background-color: #f9f9f9; /* Fondo claro para secciones */
+  background-color: #313131; /* Fondo claro para secciones */
   padding: 20px; /* Espacio interno */
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra ligera */
 }
 
 .equipo {
-  margin-top: 50px; /* Espacio superior para el equipo */
+  margin-top: 10px; /* Espacio superior para el equipo */
 }
 
 .integrantes {

@@ -1,27 +1,15 @@
 .footer-container {
-  background-color: #f8f9fa;
+  background-color: #2c3e50;
+  color: #ecf0f1;
   text-align: center;
-  border-top: 1px solid #ccc;
-  width: 100%;
-  position: relative; /* Cambia esto si es necesario */
-  bottom: 0;
-  margin-top: 50px; /* Asegúrate de que el margen no lo empuje al centro */
-  padding: 20px; /* Espacio interno */
+  padding: 20px 0;
 }
 
-  
-  .social-icons {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 10px;
-  }
-  
-  .social-icons a {
-    margin: 0 10px;
-    text-decoration: none;
-  }
-  
-  .social-icons img {
-    width: 30px;
-    height: auto;
-  }
+.footer-container .social-icons a {
+  margin: 0 10px;
+}
+
+.footer-container .social-icons img {
+  width: 30px;
+  height: 30px;
+}

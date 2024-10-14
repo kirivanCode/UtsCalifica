@@ -1,20 +1,17 @@
-body {
-  margin: 0;
-  font-family: 'Roboto', sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-top: 100px; /* Ajuste para el espacio del navbar */
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&display=swap');
+
+:root {
+  --primary-color: #5fd641;
+  --secondary-color: #45B7D1;
+  --text-color: #333;
+  --bg-color: #F7F7F7;
 }
 
-.login-background {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100vw;
-  height: 100vh;
-
-  background-image: url('https://www.uts.edu.co/sitio/wp-content/uploads/2021/07/Fachada-UTS.png');
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Noto Sans JP', sans-serif;
+  background-image: url('https://www.uts.edu.co/sitio/wp-content/uploads/2021/02/Fachada-2.jpg');
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -24,160 +21,191 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
-  width: 100%;
-  max-width: 400px;
-  padding: 30px; /* Aumentar el padding para mayor espacio */
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 20px;
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(15px);
-  animation: fadeIn 0.8s ease-in-out;
+  min-height: 100vh;
+  backdrop-filter: blur(8px);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
-/* Estilos para el card */
-.card {
-  padding: 30px;
+.form-container {
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 15px;
-  background-color: #ffffff;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  text-align: center;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  width: 90%;
+  max-width: 400px;
+  transform: translateY(0);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Títulos */
-h2 {
-  font-family: 'Poppins', sans-serif;
-  font-size: 24px;
-  color: #333;
+.form-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.login-title {
+  font-size: 28px;
+  color: var(--primary-color);
   margin-bottom: 20px;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
+  font-weight: 700;
+  text-align: center;
+  position: relative;
 }
 
-/* Imagen de perfil */
+.login-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 3px;
+  background-color: var(--secondary-color);
+}
+
 .profile-image {
-  border-radius: 50%;
-  height: 100px;
   width: 100px;
-  margin: 15px auto;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  height: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid var(--primary-color);
+  padding: 3px;
+  background-color: white;
+  transition: transform 0.3s ease;
 }
 
-/* Estilos de campos de entrada */
+.profile-image:hover {
+  transform: scale(1.05);
+}
+
 .input-field {
-  background-color: #f9f9f9;
-  border: 2px solid #1e88e5;
-  border-radius: 30px;
   width: 100%;
   padding: 12px;
-  margin-bottom: 20px;
-  transition: border-color 0.3s, box-shadow 0.3s;
+  margin: 10px 0;
+  border: 2px solid #ddd;
+  border-radius: 8px;
   font-size: 16px;
-  color: #333;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .input-field:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(69, 183, 209, 0.1);
   outline: none;
-  border-color: #1565c0;
-  box-shadow: 0 0 8px rgba(30, 136, 229, 0.3);
 }
 
-/* Botón de envío */
 .submit-button {
-  background-color: #42a5f5;
-  border: none;
-  border-radius: 30px;
   width: 100%;
   padding: 12px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary-color);
   color: white;
+  font-size: 18px;
+  font-weight: 700;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
-  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .submit-button:hover {
-  background-color: #1e88e5;
-  transform: translateY(-3px);
+  background-color: #34c139;
+  transform: translateY(-2px);
 }
 
-/* Texto de cambio de pantalla */
+.submit-button:active {
+  transform: translateY(0);
+}
+
+.success-message {
+  margin-top: 15px;
+  color: #4CAF50;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+}
+
 .switch-text {
   margin-top: 20px;
-  font-size: 15px;
-  color: #555;
+  text-align: center;
+  color: var(--text-color);
 }
 
-/* Botón para cambiar de pantalla */
 .switch-button {
   background: none;
   border: none;
-  color: #1e88e5;
+  color: var(--secondary-color);
   cursor: pointer;
-  text-decoration: underline;
-  margin-left: 5px;
-  transition: color 0.3s;
+  font-weight: bold;
+  transition: color 0.3s ease;
 }
 
 .switch-button:hover {
-  color: #1565c0;
+  color: #3A9AB1;
+  text-decoration: underline;
 }
 
-/* Animaciones */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: scale(0.9);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.role-selection {
+  margin: 15px 0;
+  width: 100%;
 }
 
-/* Media Queries para Responsividad */
-@media (max-width: 768px) {
-  .container {
-    padding: 15px;
-  }
+.role-selection label {
+  display: block;
+  margin-bottom: 5px;
+  color: var(--text-color);
+}
 
-  .input-field {
-    padding: 10px;
-  }
+.role-selection select {
+  width: 100%;
+  padding: 12px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%23333' viewBox='0 0 16 16'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
 
-  .submit-button {
-    padding: 10px;
-  }
-
-  h2 {
-    font-size: 20px;
-  }
-
-  .profile-image {
-    height: 80px;
-    width: 80px;
-  }
+.role-selection select:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 3px rgba(69, 183, 209, 0.1);
+  outline: none;
 }
 
 @media (max-width: 480px) {
-  .container {
-    padding: 10px;
+  .form-container {
+    padding: 30px;
   }
 
-  .input-field {
-    padding: 8px;
-  }
-
-  .submit-button {
-    padding: 8px;
-  }
-
-  h2 {
-    font-size: 18px;
+  .login-title {
+    font-size: 24px;
   }
 
   .profile-image {
-    height: 70px;
-    width: 70px;
+    width: 80px;
+    height: 80px;
   }
+
+  .input-field, .submit-button {
+    font-size: 16px;
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-container {
+  animation: fadeIn 0.5s ease-out;
 }

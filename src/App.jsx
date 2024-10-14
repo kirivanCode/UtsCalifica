@@ -11,9 +11,10 @@ import Footer from './components/Footer';
 import ProfesorCrud from './components/ProfesorCrud';
 import Conocenos from './components/Conocenos';
 import EstudianteCalificaciones from './components/EstudianteCalificaciones';
+import Conoce from './components/Conoce'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './styles/App.css';
+
 
 const auth = getAuth(appFirebase);
 const db = getFirestore(appFirebase);
@@ -73,7 +74,7 @@ function App() {
             <div className="content-container">
               
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Conoce />} />
                 <Route 
                   path="/profesores" 
                   element={
@@ -85,7 +86,7 @@ function App() {
                 <Route 
                   path="/calificar" 
                   element={
-                    <ProtectedRoute allowedRoles={['profesor']}>
+                    <ProtectedRoute allowedRoles={['profesor','administrador']}>
                       <EstudianteCalificaciones />
                     </ProtectedRoute>
                   } 
@@ -93,7 +94,7 @@ function App() {
                 <Route 
                   path="/calificaciones" 
                   element={
-                    <ProtectedRoute allowedRoles={['estudiante']}>
+                    <ProtectedRoute allowedRoles={['estudiante','administrador']}>
                       <EstudianteCalificaciones />
                     </ProtectedRoute>
                   } 
