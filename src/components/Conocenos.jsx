@@ -6,9 +6,9 @@ import carlosImg from '../images/carlos.jpg';
 
 const Conocenos = () => {
   const integrantes = [
-    { nombre: 'Iván Darío Sierra', imagen: ivanImg, rol: 'Desarrollador Frontend' },
-    { nombre: 'Óscar Martínez', imagen: oscarImg, rol: 'Desarrollador Backend' },
-    { nombre: 'Carlos Pérez', imagen: carlosImg, rol: 'Diseñador UX/UI' },
+    { nombre: 'Iván Darío Sierra Vega', imagen: ivanImg, rol: 'Desarrollador Frontend' },
+    { nombre: 'Óscar Felipe Segovia Alvarado', imagen: oscarImg, rol: 'Desarrollador Backend' },
+    { nombre: 'Carlos David Murillo Moreno', imagen: carlosImg, rol: 'Diseñador UX/UI' },
   ];
 
   return (

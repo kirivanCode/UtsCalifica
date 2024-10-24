@@ -1,0 +1,132 @@
+.calificaciones-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ebf5fc, #dbeaff);
+    padding: 20px;
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+  
+  .header p {
+    color: #3b82f6;
+    font-size: 1.2rem;
+  }
+  
+  .filter-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .input-text, .input-select {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+    width: 250px;
+  }
+  
+  .profesores-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    width: 100%;
+  }
+  
+  .profesor-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.2s;
+  }
+  
+  .profesor-card:hover {
+    transform: scale(1.05);
+  }
+  
+  .profesor-info {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .profesor-info h2 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #1e3a8a;
+  }
+  
+  .profesor-info p {
+    color: #64748b;
+  }
+  
+  .calificaciones-form .pregunta {
+    margin-bottom: 15px;
+  }
+  
+  .calificaciones-form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+  
+  .calificaciones-form select, .comentarios textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #cbd5e1;
+  }
+  
+  .submit-button {
+    width: 100%;
+    padding: 10px;
+    background: #3b82f6;
+    color: white;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background: #1d4ed8;
+  }
+  
+  .submit-button.disabled {
+    background: #93c5fd;
+    cursor: not-allowed;
+  }
+  
+  .loading-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .loading-spinner::after {
+    content: '';
+    width: 40px;
+    height: 40px;
+    border: 5px solid rgba(59, 130, 246, 0.5);
+    border-top-color: #3b82f6;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  

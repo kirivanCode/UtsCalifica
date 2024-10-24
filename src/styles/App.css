@@ -1,68 +1,105 @@
+/* Botón de WhatsApp flotante mejorado */
 .whatsapp-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background-color: #25d366;
-    padding: 10px;
-    border: none;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 30px; 
-    height: auto;
-    margin-right: 8px;
-    z-index: 1000;
-  }
-  /* Posiciona el navbar en la parte superior de la pantalla */
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25d366;
+  padding: 15px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
+  width: 50px; /* Aumentado para mejor visibilidad */
+  height: 50px;
+  z-index: 1000;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
 
+.whatsapp-button:hover {
+  transform: scale(1.1); /* Efecto de agrandamiento en hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Sombra más fuerte en hover */
+}
 
+.whatsapp-button img {
+  width: 100%; /* Imagen del icono WhatsApp ajustada */
+  height: auto;
+}
 
+/* Estilos mejorados para el logo */
 .logo {
-  width: 150px;
+  width: 120px; /* Tamaño del logo ajustado */
+  height: auto;
+  margin-right: 15px;
+  transition: transform 0.3s ease; /* Transición para el hover */
+}
+
+.logo:hover {
+  transform: scale(1.05); /* Efecto hover sutil */
+}
+
+/* Barra de navegación */
+.navbar {
+  background-color: #333; /* Fondo oscuro */
+  padding: 15px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra para el navbar */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
 }
 
 .navbar-text {
-  color: #63e630;
-  font-weight: bold;
+  color: #ffffff; /* Texto blanco para contraste */
+  font-weight: 600;
+  font-size: 18px; /* Mayor tamaño de fuente */
+  letter-spacing: 1px; /* Espaciado entre letras */
 }
 
 .nav-link {
-  color: #fff; 
+  color: #fff;
   font-size: 16px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border-bottom 0.3s ease; /* Añadido efecto en border */
+  margin-left: 20px;
+  padding-bottom: 5px;
+  text-decoration: none; /* Eliminado subrayado */
+  border-bottom: 2px solid transparent; /* Línea debajo del enlace */
 }
 
 .nav-link:hover {
-  color: #c3e6cb; 
+  color: #c3e6cb;
+  border-bottom: 2px solid #c3e6cb; /* Línea de color en hover */
 }
 
 .btn-link {
   color: #fff;
   font-size: 16px;
-  transition: color 0.3s ease;
+  transition: color 0.3s ease, border 0.3s ease; /* Añadido borde suave en hover */
+  padding: 10px 15px;
+  background-color: #28a745;
+  border-radius: 8px;
+  border: 2px solid transparent;
 }
 
 .btn-link:hover {
-  color: #72dc35; 
+  color: #ffffff;
+  background-color: #218838;
+  border: 2px solid #72dc35; /* Añadido borde verde en hover */
 }
 
-
-.logo {
-  width: 95px; /* Ajuste de tamaño más pequeño para el logo */
-  height: auto;
-  margin-right: 10px;
-}
-
+/* Estilo del ícono cerrar sesión */
 .icon-cerrar-sesion {
-  width: 20px; /* Tamaño más pequeño y proporcionado del ícono */
+  width: 20px;
   margin-right: 5px;
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.2)); /* Sombra suave */
+  transition: transform 0.3s ease;
 }
 
-.navbar-text {
-  font-weight: 600;
-  color: #ffffff; /* Texto blanco para mejor contraste */
+.icon-cerrar-sesion:hover {
+  transform: rotate(20deg); /* Efecto rotación en hover */
 }
-
