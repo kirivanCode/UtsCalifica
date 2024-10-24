@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { db } from '../conexion/firebase';
-import { collection, getDocs, updateDoc, doc } from "firebase/firestore";
+import { db } from '../conexion/firebase'; // Asegúrate de que la conexión esté configurada correctamente
+import { collection, getDocs, updateDoc, doc, getDoc } from "firebase/firestore"; // Importa getDoc
 import '../styles/EstudianteCalificaciones.css'; // Archivo CSS personalizado
 
 const EstudianteCalificaciones = () => {
@@ -38,15 +38,30 @@ const EstudianteCalificaciones = () => {
     }
   };
 
-  const calificarProfesor = async (id, calificaciones, comentarios) => {
+  const calificarProfesor = async (id, comentarios, form) => {
     setActualizando(id);
     try {
       const docRef = doc(db, "profesores", id);
+      const docSnap = await getDoc(docRef); // Obtener el documento actual
+
+      let calificaciones = docSnap.exists() ? docSnap.data().calificaciones || [] : []; // Obtener calificaciones existentes
+
+      // Crear nuevo arreglo de calificaciones
+      const nuevasCalificaciones = preguntas.map((pregunta, index) => ({
+        pregunta: pregunta,
+        respuesta: escala[parseInt(form[`pregunta${index}`].value) - 1] // Obtener la respuesta como texto
+      }));
+
+      // Combinar calificaciones existentes y nuevas
+      calificaciones = [...calificaciones, ...nuevasCalificaciones]; // Agregar nuevas calificaciones al arreglo existente
+
+      // Actualizar el documento en Firebase
       await updateDoc(docRef, { 
         calificaciones,
         comentarios 
       });
 
+      // Actualizar el estado local
       setProfesores((prevProfesores) =>
         prevProfesores.map((profesor) =>
           profesor.id === id
@@ -122,10 +137,9 @@ const EstudianteCalificaciones = () => {
             <form
               onSubmit={(e) => {
                 e.preventDefault();
-                const form = e.target;
-                const calificaciones = preguntas.map((_, index) => parseInt(form[`pregunta${index}`].value));
-                const comentarios = form.comentarios.value;
-                calificarProfesor(profesor.id, calificaciones, comentarios);
+                const form = e.target; // Guardamos el formulario
+                const comentarios = form.comentarios.value; // Obtenemos solo los comentarios
+                calificarProfesor(profesor.id, comentarios, form); // Llamamos a la función con el id y el formulario
               }}
               className="calificaciones-form"
             >
