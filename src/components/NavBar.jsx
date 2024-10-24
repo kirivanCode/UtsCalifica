@@ -34,27 +34,28 @@ const NavBar = ({ usuario, rol }) => {
             <li className="nav-item">
             <NavLink to="/profesores" className="nav-link text-light" onClick={toggleMenu}>Calificar Profesores</NavLink>
             </li>
+            <li className="nav-item">
+            <NavLink to="/ver2" className="nav-link text-light" onClick={toggleMenu}>Ver calificacion</NavLink>
+            </li>
           </>
         );
       case "profesor":
         return (
           <>
             <li className="nav-item">
-              <NavLink to="/calificar" className="nav-link text-white" onClick={toggleMenu}>Calificar</NavLink>
+              <NavLink to="/ver" className="nav-link text-white" onClick={toggleMenu}>ver</NavLink>
             </li>
-            <li className="nav-item">
-              <NavLink to="/mis-clases" className="nav-link text-white" onClick={toggleMenu}>Mis Clases</NavLink>
-            </li>
+         
           </>
         );
-      case "estudiante":
+      case "usuario":
         return (
           <>
             <li className="nav-item">
-              <NavLink to="/ver-notas" className="nav-link text-white" onClick={toggleMenu}>Ver Notas</NavLink>
+              <NavLink to="/ver" className="nav-link text-white" onClick={toggleMenu}>Ver Notas</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink to="/mis-profesores" className="nav-link text-white" onClick={toggleMenu}>Mis Profesores</NavLink>
+              <NavLink to="/calificaciones" className="nav-link text-white" onClick={toggleMenu}>Calificar</NavLink>
             </li>
           </>
         );

@@ -12,7 +12,8 @@ import ProfesorCrud from './components/ProfesorCrud';
 import Conocenos from './components/Conocenos';
 import EstudianteCalificaciones from './components/EstudianteCalificaciones';
 import Conoce from './components/Conoce'
-
+import VisualizacionEvaluaciones from './components/ver'
+import VisualizacionEvaluaciones2 from './components/ver2'
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
@@ -86,7 +87,7 @@ function App() {
                 <Route 
                   path="/calificar" 
                   element={
-                    <ProtectedRoute allowedRoles={['profesor','administrador']}>
+                    <ProtectedRoute allowedRoles={['profesor','estudiante','administrador']}>
                       <EstudianteCalificaciones />
                     </ProtectedRoute>
                   } 
@@ -94,8 +95,24 @@ function App() {
                 <Route 
                   path="/calificaciones" 
                   element={
-                    <ProtectedRoute allowedRoles={['estudiante','administrador']}>
+                    <ProtectedRoute allowedRoles={['usuario','administrador']}>
                       <EstudianteCalificaciones />
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/ver" 
+                  element={
+                    <ProtectedRoute allowedRoles={['usuario','administrador','profesor']}>
+                      <VisualizacionEvaluaciones/>
+                    </ProtectedRoute>
+                  } 
+                />
+                <Route 
+                  path="/ver2" 
+                  element={
+                    <ProtectedRoute allowedRoles={['administrador']}>
+                      <VisualizacionEvaluaciones2/>
                     </ProtectedRoute>
                   } 
                 />
